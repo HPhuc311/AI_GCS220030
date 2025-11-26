@@ -28,7 +28,7 @@ def get_gemini_client_and_chat(system_instruction, _tools):
     """
     try:
         # The Client will automatically read GEMINI_API_KEY from the environment variable
-        client = genai.Client(api_key="AIzaSyBm6C1mShT2NImNPVkXxezsJMjyrqOq_gI")
+        client = genai.Client(api_key="AIzaSyBj4Cu3ZubjO3Bsa3CBRnN2VHeexa7UDzc")
         
         # Configure the model and start the chat session
         config = types.GenerateContentConfig(
