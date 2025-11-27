@@ -2,7 +2,7 @@ import streamlit as st
 from google import genai
 from google.genai import types
 from google.genai.errors import APIError
-from tools import ALL_TOOLS, get_data_statistics, predict_survival
+from tools import ALL_TOOLS, get_data_statistics, predict_survival, get_current_datetime, get_weather_forecast
 import os
 
 # --- UTILITY FUNCTIONS FOR APPLICATION STABILITY ---
@@ -10,6 +10,8 @@ import os
 TOOL_MAP = {
     "get_data_statistics": get_data_statistics,
     "predict_survival": predict_survival,
+    "get_current_datetime": get_current_datetime,
+    "get_weather_forecast": get_weather_forecast,
 }
 
 SYSTEM_INSTRUCTION = (

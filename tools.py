@@ -3,6 +3,7 @@ import pandas as pd
 import json
 import os
 from typing import List
+import datetime
 
 MODEL_PATH = "titanic_model.joblib"
 DATA_PATH = "titanic.csv" 
@@ -102,6 +103,40 @@ def predict_survival(Pclass: int, Sex: str, Age: float, Fare: float, Embarked: s
     except Exception as e:
         return json.dumps({"error": f"Prediction failed due to an internal error: {e}"})
 
+def get_current_datetime() -> str:
+    """
+    Returns the current date and time in a human-readable format, 
+    including the day, month, year, and time.
+    (Returns JSON string)
+    """
+    now = datetime.datetime.now()
+    result = {
+        "datetime": now.strftime("%Y-%m-%d %H:%M:%S"),
+        "timestamp": now.timestamp(),
+        "timezone": "Local"
+    }
+    return json.dumps(result, indent=4)
+
+def get_weather_forecast(city: str) -> str:
+    """
+    Provides the weather forecast for a specified city. 
+    (Note: This is a simulated function and returns static data.)
+    
+    Args:
+        city: The name of the city (e.g., 'Hanoi', 'London').
+        
+    Returns:
+        A JSON string containing the simulated forecast.
+    """
+    # Static simulation for demonstration purposes
+    simulated_data = {
+        "city": city,
+        "temperature": "25°C",
+        "condition": "Mostly sunny with light breeze.",
+        "humidity": "65%",
+        "last_updated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    return json.dumps(simulated_data, indent=4)
 
 # List of all available functions for the Gemini model
-ALL_TOOLS: List = [get_data_statistics, predict_survival]
+ALL_TOOLS: List = [get_data_statistics, predict_survival, get_current_datetime, get_weather_forecast ]
